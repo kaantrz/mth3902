@@ -8,32 +8,25 @@ import java.util.concurrent.TimeUnit;
 public class HazelcastExample {
 
     public static void main(String[] args) {
-        // Configure Hazelcast client
         ClientConfig clientConfig = new ClientConfig();
-        clientConfig.getNetworkConfig().addAddress("localhost:5701"); // Adjust port if necessary
+        clientConfig.getNetworkConfig().addAddress("localhost:5701"); 
 
-        // Create Hazelcast client instance
         HazelcastInstance hazelcastClient = HazelcastClient.newHazelcastClient(clientConfig);
 
-        // Get the distributed map from Hazelcast
         IMap<Integer, Person> personMap = hazelcastClient.getMap("persons");
 
-        // Dummy Person object
-        Person dummyPerson = new Person("John", "Doe", 30); // Example person
+        Person dummyPerson = new Person("John", "Doe", 30); 
 
-        // Put dummy Person objects into the map
         for (int i = 0; i < 10000; i++) {
             personMap.put(i, dummyPerson);
         }
 
         System.out.println("Putting 10,000 dummy Person objects into Hazelcast map.");
 
-        // Retrieve a dummy Person object from the map
-        Person retrievedPerson = personMap.get(0); // Retrieving the first entry
+        Person retrievedPerson = personMap.get(0); 
 
         System.out.println("Retrieved Person: " + retrievedPerson);
 
-        // Shutdown Hazelcast client
         hazelcastClient.shutdown();
     }
 
