@@ -1,0 +1,1 @@
+First I pulled a Hazelcast Docker Image by opening a terminal my local machine and ran a command to pull the Hazelcast Docker image from Docker Hub. Then, I ran a hazelcast container. Finally, I pulled the Management Center Docker image.
